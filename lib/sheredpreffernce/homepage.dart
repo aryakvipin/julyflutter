@@ -14,6 +14,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   late SharedPreferences data;
   late String username;
+  late String name;
   @override
   void initState() {
     fetchonme();
@@ -23,6 +24,8 @@ class _HomeState extends State<Home> {
     data = await SharedPreferences.getInstance();
     setState(() {
       username=data.getString('username')!;
+      name=data.getString('name')!;
+      ;
     });
   }
 
@@ -30,18 +33,18 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("home"),),
+      appBar: AppBar(title: Text("$username"),),
       body: Center(
         child: Column(
           children: [
             Text(
-              "Hai, Welcome $username",
+              "Hai, Welcome $name",
               style: TextStyle(fontSize: 20),
             ),
             ElevatedButton(onPressed: (){
               data.setBool('newuser',true);
               Navigator.push(context, MaterialPageRoute(builder: (context)=>sharedprefernce()));
-            }, child: Text("logout"))
+            }, child: Text("logout")),
             //
           ],
         ),

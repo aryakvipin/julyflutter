@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:julyfultter/sheredpreffernce/reg.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'homepage.dart';
@@ -18,10 +19,26 @@ class _sharedprefernceState extends State<sharedprefernce> {
   TextEditingController  password=TextEditingController();
 
   late bool newuser;
+  late String regname;
+  late String regusername;
+  late String regpassword;
+
+
+
   @override
   void initState() {
     checkuser();
+    getuser();
+
     super.initState();
+  }
+
+  void getuser()async{
+    data=await SharedPreferences.getInstance();
+      regname=data.getString("name")!;
+      regusername=data.getString("username")!;
+      regpassword=data.getString("password")!;
+
   }
 
   void checkuser() async{
@@ -67,16 +84,23 @@ class _sharedprefernceState extends State<sharedprefernce> {
                 String uname=username.text;
                 String paswrd=password.text;
                 //
-                if(uname!='' && paswrd !=''){
+                if(uname!='' && paswrd !='' && uname==regusername && paswrd==regpassword ){
                   print("login Success");
                   data.setString("username", uname);
+                  data.setString("name", regname);
                   data.setBool('newuser',false);
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context)=>Home()));
                 }
               },   child: Text("Log_In"),
 
-            )
+            ),
+            TextButton(onPressed: (){
+    Navigator.push(context,
+    MaterialPageRoute(builder: (context)=>Register()));
+
+            }, child: Text("Not a user ? Create an account!"))
+
           ],
         ),
       ),
