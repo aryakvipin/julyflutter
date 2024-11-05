@@ -4,6 +4,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   await Hive.initFlutter();
   await Hive.openBox("task_box");
 
@@ -19,7 +20,7 @@ class MyTODo extends StatefulWidget {
 
 class _MyTODoState extends State<MyTODo> {
   ///to store task from hive db
-   List<Map<String, dynamic>> task = [];
+  List<Map<String, dynamic>> task = [];
   //
   ///object creation of hive
   final tbox = Hive.box('task_box');
@@ -88,8 +89,8 @@ class _MyTODoState extends State<MyTODo> {
               margin: const EdgeInsets.all(10),
               elevation: 3,
               child: ListTile(
-               title: Text(task[index]['name']),
-               subtitle: Text(task[index]['details']),
+                title: Text(task[index]['name']),
+                subtitle: Text(task[index]['details']),
                 trailing: Wrap(
                   children: [
                     IconButton(
@@ -99,7 +100,7 @@ class _MyTODoState extends State<MyTODo> {
                         icon: const Icon(Icons.edit_calendar)),
                     IconButton(
                         onPressed: () {
-                         deleteTask(task[index]["key"]);
+                          deleteTask(task[index]["key"]);
                         }, icon: const Icon(Icons.delete))
                   ],
                 ),
@@ -157,6 +158,10 @@ class _MyTODoState extends State<MyTODo> {
                       if (id == null) {
                         createTask({'name': name_controller.text, 'details': details_controller.text});
                       }
+
+
+
+
                       if (id != null) {
                         updateTask(id ,{'name' :name_controller.text, 'details' :details_controller.text});
                       }

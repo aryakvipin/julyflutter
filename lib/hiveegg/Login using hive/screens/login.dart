@@ -1,14 +1,14 @@
-import 'package:aprilflutter/hiveegg/Login%20using%20hive/database/Database.dart';
-import 'package:aprilflutter/hiveegg/Login%20using%20hive/model/usermodel.dart';
-import 'package:aprilflutter/hiveegg/Login%20using%20hive/screens/registration.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:julyfultter/hiveegg/Login%20using%20hive/screens/registration.dart';
 
 
+import '../database/Database.dart';
+import '../model/usermodel.dart';
 import 'home.dart';
 
 void main() async {
@@ -70,12 +70,8 @@ class Login extends StatelessWidget {
   Future<void> findUser(List<User> userlist) async{
     final email    = uname.text.trim();
     final password = pass.text.trim();
-
     bool userFound = false;
     final validate = await validateLogin(email,password);
-
-
-
 
     if(validate == true){
       await Future.forEach(userlist, (user) {
@@ -85,18 +81,18 @@ class Login extends StatelessWidget {
           userFound = false;
         }
       });
+
       if(userFound == true){
         Get.offAll(()=> Homeee(email :email));
         Get.snackbar("Success", "Login Success",
             backgroundColor: Colors.green);
-      }else{
+      }
+      else{
         Get.snackbar("Error", "Incorrect email/Password",
             backgroundColor: Colors.red);
       }
     }
   }
-
-
  Future<bool> validateLogin(String email, String password) async {
     if(email != '' && password != ''){
       return true;

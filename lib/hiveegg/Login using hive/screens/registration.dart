@@ -64,7 +64,6 @@ class Registration extends StatelessWidget {
   }
 
   void validateSignUp() async {
-
     final email = usename.text.trim(); // email from controller
     final pass = password.text.trim(); // password from controller
     final cpass = confirmpass.text.trim(); // confirm password from controller
@@ -73,16 +72,14 @@ class Registration extends StatelessWidget {
 
     if (email != "" && pass != "" && cpass != "") {
       if (emailValidationResult == true) {
-
-
         final passValidationResult = checkPassword(pass, cpass);
         if (passValidationResult == true) {
           final user = User(email: email, password: pass);
-        //
-          await DBFunction.instance.userSignUp(user);
+
+           await DBFunction.instance.userSignUp(user);
           Get.back();
           Get.snackbar("Success", "Account created");
-         }
+        }
       }
       else {
         Get.snackbar("Error", "Provide a valid Email");
@@ -93,7 +90,6 @@ class Registration extends StatelessWidget {
     }
   }
 
-
   bool checkPassword(String pass, String cpass) {
     if (pass == cpass) {
       if (pass.length < 6) {
@@ -102,9 +98,7 @@ class Registration extends StatelessWidget {
       } else {
         return true;
       }
-    }
-
-    else {
+    } else {
       Get.snackbar("Error", "Password mismatch");
       return false;
     }
