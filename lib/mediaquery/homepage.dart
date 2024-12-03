@@ -34,9 +34,13 @@ class _homepageState extends State<homepage> {
 
 
           }, icon: Icon(Icons.arrow_drop_down_circle))
-      ],) :null,
+      ]
+        ) :null,
       drawer: Drawer(child: leftwidgte() ,),
-      body: Row(
+
+
+
+        body: Row(
     children: [
     if(Resposnive.isWeb(context))
       Expanded(child: leftwidgte(),flex: 2,),

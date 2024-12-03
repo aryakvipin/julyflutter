@@ -27,6 +27,7 @@ class Centewidget extends StatelessWidget{
             if(Resposnive.isTab(context )) Rightwidgt(),
 
 
+
           ],),
         ),
       );

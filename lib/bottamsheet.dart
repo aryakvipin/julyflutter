@@ -13,11 +13,12 @@ class _BottamsheetState extends State<Bottamsheet> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:Container()
-
+      body: Container(
+        child: Center(child: TextButton(onPressed: ()=>show(context), child: Text("show"))),
       ),
     );
   }
+
 
   show(BuildContext context) {
     showModalBottomSheet(context: context, builder: (context){
