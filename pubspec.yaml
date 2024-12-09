@@ -52,7 +52,12 @@ dependencies:
   get:
   email_validator:
   responsive_framework: ^1.5.1
-  
+  flutter_local_notifications:
+  scrollable_positioned_list: ^0.3.8
+  internet_connection_checker:
+  top_snackbar_flutter:
+  timezone:
+  dio:
 
 
 dev_dependencies:
