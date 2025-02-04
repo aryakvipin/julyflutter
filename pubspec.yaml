@@ -58,6 +58,8 @@ dependencies:
   top_snackbar_flutter:
   timezone:
   dio:
+  provider:
+  permission_handler: ^11.3.1
 
 
 dev_dependencies:
@@ -100,10 +102,10 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
+  fonts:
+    - family: Playwrite_NL_Guides
+      fonts:
+        - asset: assets/fonts/Playwrite_NL_Guides/PlaywriteNLGuides-Regular.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

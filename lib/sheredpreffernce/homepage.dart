@@ -13,8 +13,8 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   late SharedPreferences data;
-  late String username;
-  late String name;
+   String? username;
+   String ?name;
   @override
   void initState() {
     fetchonme();
